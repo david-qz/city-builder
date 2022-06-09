@@ -1,10 +1,14 @@
 // state
-const city = {
-    name: 'Pleasantville',
-    biome: 'temperate',
-    arch: 'victorian',
-    slogans: [],
-};
+function getDefaultCity() {
+    return {
+        name: 'Pleasantville',
+        biome: 'temperate',
+        arch: 'victorian',
+        slogans: [],
+    };
+}
+
+let city = getDefaultCity();
 const cities = [];
 
 // City Designer Component
@@ -48,6 +52,9 @@ builderSloganButton.addEventListener('click', () => {
 builderSaveButton.addEventListener('click', () => {
     // Need to deep copy the slogan array.
     cities.push(JSON.parse(JSON.stringify(city)));
+    city = getDefaultCity();
+    displayInput();
+    displayCity();
     displayList();
 });
 
