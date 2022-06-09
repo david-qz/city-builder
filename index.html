@@ -14,14 +14,67 @@
 
 <body>
     <header>
-        <img src="assets/html_css_js.png">
-        <h1>Web UI Project</h1>
+        <h1>City Builder</h1>
     </header>
-
     <main>
 
-    </main>
+        <section id="designer-section">
+            <label for="input1">Name</label>
+            <input id="input1"></input>
 
+            <label for="input2">Biome</label>
+            <select id="input2">
+                <option value="temperate" selected>Temperate</option>
+                <option value="desert">Desert</option>
+                <option value="coastal">Coastal</option>
+            </select>
+
+            <label for="input3">Architecture</label>
+            <select id="input3">
+                <option value="victorian" selected>Victorian</option>
+                <option value="gothic">Gothic</option>
+                <option value="classical">Classical</option>
+            </select>
+
+            <label for="input4">Slogan</label>
+            <textarea id="input4" rows="6"></textarea>
+
+            <button id="slogan-button">Add Slogan</button>
+            <button id="save-button">Save City</button>
+        </section>
+
+        <section id="city-display-section">
+            <p>PLACEHOLDER</p>
+            <img src="assets/city-parts/architecture-victorian.png">
+            <img src="assets/city-parts/biome-temperate.png">
+            <ul>
+                <li>PLACEHOLDER</li>
+                <li>PLACEHOLDER</li>
+            </ul>
+        </section>
+
+        <section id="city-list-section">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Biome</td>
+                        <td>Architecture</td>
+                        <td># Slogans</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PLACEHOLDER</td>
+                        <td>PLACEHOLDER</td>
+                        <td>PLACEHOLDER</td>
+                        <td>PLACEHOLDER</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
     <footer>&copy;2021 Aspiring Software Developer</footer>
 
     <script type="module" src="app.js"></script>
