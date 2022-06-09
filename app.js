@@ -24,39 +24,45 @@ function displayInput() {
     builderArchSelect.value = city.arch;
 }
 
-builderNameInput.addEventListener('input', () => {
-    city.name = builderNameInput.value;
+function handleInput(obj, key, inputElement) {
+    obj[key] = inputElement.value;
     displayCity();
-});
+}
 
-builderBiomeSelect.addEventListener('change', () => {
-    city.biome = builderBiomeSelect.value;
-    displayCity();
-});
-
-builderArchSelect.addEventListener('change', () => {
-    city.arch = builderArchSelect.value;
-    displayCity();
-});
-
-builderSloganButton.addEventListener('click', () => {
+function handleAddSlogan() {
     const slogan = builderSloganTextArea.value.trim();
     if (slogan) {
         city.slogans.push(slogan);
+        displayCity();
     }
     builderSloganTextArea.value = '';
     builderSloganTextArea.focus();
-    displayCity();
-});
+}
 
-builderSaveButton.addEventListener('click', () => {
+function handleSaveCity() {
     // Need to deep copy the slogan array.
     cities.push(JSON.parse(JSON.stringify(city)));
     city = getDefaultCity();
     displayInput();
     displayCity();
     displayList();
+}
+
+builderNameInput.addEventListener('input', () => {
+    handleInput(city, 'name', builderNameInput);
 });
+
+builderBiomeSelect.addEventListener('change', () => {
+    handleInput(city, 'biome', builderBiomeSelect);
+});
+
+builderArchSelect.addEventListener('change', () => {
+    handleInput(city, 'arch', builderArchSelect);
+});
+
+builderSloganButton.addEventListener('click', handleAddSlogan);
+
+builderSaveButton.addEventListener('click', handleSaveCity);
 
 // City Display Component
 const displaySection = document.querySelector('#display-section');
