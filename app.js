@@ -90,8 +90,10 @@ function displayList() {
         return td;
     }
 
+    const data = cities.length !== 0 ? cities : [{ name: '', biome: '', arch: '', slogans: {} }];
+
     tableBody.innerHTML = '';
-    for (const city of cities) {
+    for (const city of data) {
         const tr = document.createElement('tr');
         tr.appendChild(createTd(city.name));
         tr.appendChild(createTd(city.biome));
