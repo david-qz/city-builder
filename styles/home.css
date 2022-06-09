@@ -94,6 +94,11 @@ td {
     border-right: var(--table-border);
 }
 
+/* note: height acts like min-height on td... but why? */
+tbody td {
+    height: 25px;
+}
+
 td:first-child {
     border-left: none;
     border-right: var(--table-border);
