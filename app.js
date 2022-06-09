@@ -1,18 +1,32 @@
-// import needed modules
-
 // state
+const city = {
+    name: 'Pleasantville',
+    biome: 'temperate',
+    architecture: 'victorian',
+    slogans: ['The Garden City'],
+};
+const cities = [];
 
-// components
-    // component
-    // define and grab DOM elements
-    // display functions
-    // optional: subscribe to events
-        // event handlers - what needs to happen?
-        // logic and calculations
-        // state update
-        // re-display components (which ones?)
-    // optional: handle functions for shared event handler logic
+// City Display Component
+const cityDisplaySection = document.querySelector('#city-display-section');
+const cityDisplayNameElement = cityDisplaySection.querySelector('p');
+const [cityDisplayBiomeImg, cityDisplayArchitectureImg] = cityDisplaySection.querySelectorAll('img');
+const cityDisplaySloganList = cityDisplaySection.querySelector('ul');
+
+function displayCity() {
+    const { name, biome, architecture, slogans } = city;
+
+    cityDisplayNameElement.textContent = name;
+    cityDisplayBiomeImg.src = biome ? 'assets/city-parts/biome-' + biome + '.png' : '';
+    cityDisplayArchitectureImg.src = architecture ? 'assets/city-parts/architecture-' + architecture + '.png' : '';
+
+    cityDisplaySloganList.innerHTML = '';
+    for (const slogan of slogans) {
+        const li = document.createElement('li');
+        li.textContent = slogan;
+        cityDisplaySloganList.appendChild(li);
+    }
+}
 
 // page load actions
-
-
+displayCity();
