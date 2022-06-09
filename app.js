@@ -48,6 +48,7 @@ builderSloganButton.addEventListener('click', () => {
 builderSaveButton.addEventListener('click', () => {
     // Need to deep copy the slogan array.
     cities.push(JSON.parse(JSON.stringify(city)));
+    displayList();
 });
 
 // City Display Component
@@ -71,6 +72,29 @@ function displayCity() {
     }
 }
 
+// City List Component
+const cityListSection = document.querySelector('#list-section');
+const tableBody = cityListSection.querySelector('tbody');
+
+function displayList() {
+    function createTd(text) {
+        const td = document.createElement('td');
+        td.textContent = text;
+        return td;
+    }
+
+    tableBody.innerHTML = '';
+    for (const city of cities) {
+        const tr = document.createElement('tr');
+        tr.appendChild(createTd(city.name));
+        tr.appendChild(createTd(city.biome));
+        tr.appendChild(createTd(city.arch));
+        tr.appendChild(createTd(city.slogans.length));
+        tableBody.appendChild(tr);
+    }
+}
+
 // page load actions
 displayInput();
 displayCity();
+displayList();
