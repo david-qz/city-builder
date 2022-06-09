@@ -17,20 +17,20 @@ section {
     REGION: City Designer
 */
 
-#designer-section {
+#builder-section {
     background-color: rgba(255, 0, 0, 0.5);
     padding: 10px;
     min-width: 300px;
 }
 
-#designer-section label {
+#builder-section label {
     display: block;
     margin-bottom: 3px;
 }
 
-#designer-section input,
-#designer-section select,
-#designer-section textarea {
+#builder-section input,
+#builder-section select,
+#builder-section textarea {
     display: block;
     width: 100%;
     margin-bottom: 12px;
@@ -54,14 +54,10 @@ textarea {
     REGION: City Display
 */
 
-#city-display-section {
+#display-section {
     background-color: rgba(0, 0, 255, 0.2);
     text-align: center;
     padding: 10px;
-}
-
-#city-list-section {
-    background-color: rgba(0, 255, 0, 0.2);
 }
 
 img {
@@ -72,21 +68,25 @@ table {
     border-collapse: collapse;
 }
 
-#city-display-section li {
+#display-section li {
     margin: 5px;
 }
 
-#city-display-section li::after {
+#display-section li::after {
     content: "\"";
 }
 
-#city-display-section li::before {
+#display-section li::before {
     content: "\"";
 }
 
 /*
     REGION: City List
 */
+
+#list-section {
+    background-color: rgba(0, 255, 0, 0.2);
+}
 
 td {
     padding: 5px 10px;
