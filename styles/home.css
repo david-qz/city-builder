@@ -20,7 +20,7 @@ section {
 */
 
 #builder-section {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: #FE6D72;
     padding: 10px;
     min-width: 300px;
 }
@@ -91,7 +91,7 @@ textarea {
 }
 
 .desert {
-    background-color: rgb(235, 194, 166);
+    background-color: rgb(226, 166, 126);
     color: black;
 }
 
@@ -118,7 +118,7 @@ textarea {
 */
 
 #list-section {
-    background-color: rgba(0, 255, 0, 0.2);
+    background-color: #7ed49f;
 }
 
 table {
