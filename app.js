@@ -3,7 +3,7 @@ function getDefaultCity() {
     return {
         name: 'Pleasantville',
         biome: 'temperate',
-        arch: 'victorian',
+        arch: 'gothic',
         slogans: [],
     };
 }
