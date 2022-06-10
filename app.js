@@ -48,6 +48,16 @@ function handleSaveCity() {
     displayList();
 }
 
+function loadCity(index) {
+    if (!cities[index])
+        return;
+
+    [city] = cities.splice(index, 1);
+    displayInput();
+    displayCity();
+    displayList();
+}
+
 builderNameInput.addEventListener('input', () => {
     handleInput(city, 'name', builderNameInput);
 });
@@ -100,16 +110,32 @@ function displayList() {
         return td;
     }
 
-    const data = cities.length !== 0 ? cities : [{ name: '', biome: '', arch: '', slogans: {} }];
+    function createTdButton(text, callback) {
+        const td = document.createElement('td');
+        const button = document.createElement('button');
+        td.appendChild(button);
+        button.innerText = text;
+        button.addEventListener('click', callback);
+        return td;
+    }
+
+    function generateRow({ name, biome, arch, length, index }) {
+        const tr = document.createElement('tr');
+        tr.appendChild(createTd(name));
+        tr.appendChild(createTd(biome));
+        tr.appendChild(createTd(arch));
+        tr.appendChild(createTd(length));
+        tr.appendChild(createTdButton('Load', () => {
+            loadCity(index);
+        }));
+        tableBody.appendChild(tr);
+    }
 
     tableBody.innerHTML = '';
-    for (const city of data) {
-        const tr = document.createElement('tr');
-        tr.appendChild(createTd(city.name));
-        tr.appendChild(createTd(city.biome));
-        tr.appendChild(createTd(city.arch));
-        tr.appendChild(createTd(city.slogans.length));
-        tableBody.appendChild(tr);
+    let index = 0;
+    for (const { name, biome, arch, slogans } of cities) {
+        const row = { name, biome, arch, length: slogans.length, index };
+        generateRow(row);
     }
 }
 
