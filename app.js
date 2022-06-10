@@ -77,6 +77,10 @@ function displayCity() {
     displayBiomeImg.src = biome ? 'assets/city-parts/biome-' + biome + '.png' : '';
     displayArchImg.src = arch ? 'assets/city-parts/architecture-' + arch + '.png' : '';
 
+    displaySection.classList = '';
+    displaySection.classList.add(biome);
+    displaySection.classList.add(arch);
+
     displaySloganList.innerHTML = '';
     for (const slogan of slogans) {
         const li = document.createElement('li');

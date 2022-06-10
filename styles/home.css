@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Unicase:wght@400;700&family=Diplomata&display=swap');
+
 :root {
     --table-border: 1px solid black;
 }
@@ -55,17 +57,18 @@ textarea {
 */
 
 #display-section {
-    background-color: rgba(0, 0, 255, 0.2);
+    /* background-color: rgba(0, 0, 255, 0.2); */
     text-align: center;
     padding: 10px;
 }
 
-img {
-    width: 175px;
+#display-section p {
+    margin: 8px 0;
+    font-size: 2em;
 }
 
-table {
-    border-collapse: collapse;
+#display-section img {
+    width: 175px;
 }
 
 #display-section li {
@@ -80,12 +83,46 @@ table {
     content: "\"";
 }
 
+/* themes */
+
+.temperate {
+    background-color: rgb(84, 134, 101);
+    color: white;
+}
+
+.desert {
+    background-color: rgb(235, 194, 166);
+    color: black;
+}
+
+.coastal {
+    background-color: rgb(81, 138, 168);
+    color: rgb(255, 255, 255);
+}
+
+.victorian {
+    font-family: 'Diplomata', cursive;
+    font-size: 0.8em; /* why is this font so wide? */
+}
+
+.gothic {
+    font-family: 'Cormorant Unicase', serif;
+}
+
+.classical {
+    font-family: 'Cinzel', serif;
+}
+
 /*
     REGION: City List
 */
 
 #list-section {
     background-color: rgba(0, 255, 0, 0.2);
+}
+
+table {
+    border-collapse: collapse;
 }
 
 td {
