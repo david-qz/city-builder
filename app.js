@@ -16,7 +16,7 @@ const builderSection = document.querySelector('#builder-section');
 const builderNameInput = builderSection.querySelector('input');
 const [builderBiomeSelect, builderArchSelect] = builderSection.querySelectorAll('select');
 const builderSloganTextArea = builderSection.querySelector('textarea');
-const [builderSloganButton, builderSaveButton] = builderSection.querySelectorAll('button');
+const [builderPushSloganButton, builderPopSloganButton, builderSaveButton] = builderSection.querySelectorAll('button');
 
 function displayInput() {
     builderNameInput.value = city.name;
@@ -37,6 +37,11 @@ function handleAddSlogan() {
     }
     builderSloganTextArea.value = '';
     builderSloganTextArea.focus();
+}
+
+function handlePopSlogan() {
+    city.slogans.pop();
+    displayCity();
 }
 
 function handleSaveCity() {
@@ -71,7 +76,9 @@ builderArchSelect.addEventListener('change', () => {
     handleInput(city, 'arch', builderArchSelect);
 });
 
-builderSloganButton.addEventListener('click', handleAddSlogan);
+builderPushSloganButton.addEventListener('click', handleAddSlogan);
+
+builderPopSloganButton.addEventListener('click', handlePopSlogan);
 
 builderSaveButton.addEventListener('click', handleSaveCity);
 
