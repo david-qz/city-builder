@@ -42,7 +42,7 @@ textarea {
     resize: none;
 }
 
-#slogan-button {
+.tucked-up {
     position: relative;
     top: -8px;
 }
