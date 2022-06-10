@@ -43,9 +43,7 @@ function handleSaveCity() {
     // Need to deep copy the slogan array.
     cities.push(JSON.parse(JSON.stringify(city)));
     city = getDefaultCity();
-    displayInput();
-    displayCity();
-    displayList();
+    displayAll();
 }
 
 function loadCity(index) {
@@ -53,9 +51,12 @@ function loadCity(index) {
         return;
 
     [city] = cities.splice(index, 1);
-    displayInput();
-    displayCity();
-    displayList();
+    displayAll();
+}
+
+function deleteCity(index) {
+    cities.splice(index, 1);
+    displayAll();
 }
 
 builderNameInput.addEventListener('input', () => {
@@ -115,31 +116,53 @@ function displayList() {
         const button = document.createElement('button');
         td.appendChild(button);
         button.innerText = text;
-        button.addEventListener('click', callback);
+        if (callback) {
+            button.addEventListener('click', callback);
+        } else {
+            button.disabled = true;
+        }
         return td;
     }
 
     function generateRow({ name, biome, arch, length, index }) {
+        let editCallback = null;
+        let deleteCallback = null;
+
+        if (index >= 0) {
+            editCallback = () => { loadCity(index); };
+            deleteCallback = () => { deleteCity(index); };
+        }
+
         const tr = document.createElement('tr');
         tr.appendChild(createTd(name));
         tr.appendChild(createTd(biome));
         tr.appendChild(createTd(arch));
         tr.appendChild(createTd(length));
-        tr.appendChild(createTdButton('Load', () => {
-            loadCity(index);
-        }));
+        tr.appendChild(createTdButton('Edit', editCallback));
+        tr.appendChild(createTdButton('Delete', deleteCallback));
         tableBody.appendChild(tr);
     }
 
     tableBody.innerHTML = '';
+
+    // Fake row for aesthetics
+    if (!cities.length) {
+        generateRow({ name: '', biome: '', arch: '', length: '', index: -1 });
+    }
+
     let index = 0;
     for (const { name, biome, arch, slogans } of cities) {
         const row = { name, biome, arch, length: slogans.length, index };
         generateRow(row);
+        index++;
     }
 }
 
+function displayAll() {
+    displayInput();
+    displayCity();
+    displayList();
+}
+
 // page load actions
-displayInput();
-displayCity();
-displayList();
+displayAll();
